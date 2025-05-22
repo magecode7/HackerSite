@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>H4CK3R TERMINAL</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">H4CK3R_TERMINAL v1.0</div>
+            <div class="status">
+                <span class="status-text">STATUS: </span>
+                <span class="status-value">READY</span>
+            </div>
+        </div>
+        
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                </div>
+                <div class="terminal-title">root@h4ck3r:~#</div>
+            </div>
+            <div class="terminal-content" id="terminal-content">
+                <div class="line">Инициализация системы...</div>
+                <div class="line">Загрузка модулей безопасности...</div>
+                <div class="line">Подключение к серверам...</div>
+                <div class="line">Система готова. Введите команду.</div>
+                <div class="line command-line">
+                    <span class="prompt">root@h4ck3r:~# </span>
+                    <span class="command" id="command"></span>
+                    <span class="cursor blink">█</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h3>ИНСТРУМЕНТЫ</h3>
+                <ul class="tools-list">
+                    <li class="tool" data-command="scan">СКАНИРОВАНИЕ СЕТИ</li>
+                    <li class="tool" data-command="brute">БРУТФОРС ПАРОЛЯ</li>
+                    <li class="tool" data-command="decrypt">ДЕШИФРОВКА</li>
+                    <li class="tool" data-command="exploit">ЭКСПЛОЙТ СИСТЕМЫ</li>
+                    <li class="tool" data-command="ddos">DDOS АТАКА</li>
+                    <li class="tool" data-command="backdoor">УСТАНОВКА БЭКДОРА</li>
+                    <li class="tool" data-command="rootkit">ВНЕДРЕНИЕ РУТКИТА</li>
+                    <li class="tool" data-command="ransom">ШИФРОВАНИЕ ДАННЫХ</li>
+                    <li class="tool" data-command="phish">ФИШИНГ</li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h3>СТАТУС СИСТЕМЫ</h3>
+                <div class="system-stats">
+                    <div class="stat">
+                        <span class="stat-name">CPU:</span>
+                        <div class="progress-bar">
+                            <div class="progress" id="cpu-progress"></div>
+                        </div>
+                        <span class="stat-value" id="cpu-value">0%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-name">RAM:</span>
+                        <div class="progress-bar">
+                            <div class="progress" id="ram-progress"></div>
+                        </div>
+                        <span class="stat-value" id="ram-value">0%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-name">СЕТЬ:</span>
+                        <div class="progress-bar">
+                            <div class="progress" id="network-progress"></div>
+                        </div>
+                        <span class="stat-value" id="network-value">0 Kb/s</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="ip-address" id="ip-address">IP: 192.168.1.1</div>
+            <div class="date-time" id="date-time">00:00:00</div>
+        </div>
+    </div>
+    
+    <div class="modal" id="attack-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="attack-title">АТАКА В ПРОЦЕССЕ</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="attack-progress">
+                    <div class="attack-progress-bar" id="attack-progress-bar"></div>
+                </div>
+                <div class="attack-log" id="attack-log"></div>
+                <div class="attack-target">
+                    <div class="target-info">
+                        <span class="target-label">ЦЕЛЬ:</span>
+                        <span class="target-value" id="target-value">Unknown</span>
+                    </div>
+                    <div class="target-status">
+                        <span class="target-label">СТАТУС:</span>
+                        <span class="target-status-value" id="target-status">В ожидании</span>
+                    </div>
+                </div>
+                <div class="attack-visual" id="attack-visual"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="overlay" id="boot-overlay">
+        <div class="boot-sequence">
+            <div class="boot-logo">H4CK3R OS</div>
+            <div class="boot-progress">
+                <div class="boot-progress-bar" id="boot-progress-bar"></div>
+            </div>
+            <div class="boot-text" id="boot-text">Загрузка системы...</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
