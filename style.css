@@ -10,6 +10,21 @@
     --warning-color: #ffcc00;
     --header-color: #111111;
     --sidebar-color: #0c0c0c;
+    
+    /* Цвета для разных типов хакинга */
+    --scan-color: #00aaff;
+    --brute-color: #ff5500;
+    --decrypt-color: #aa00ff;
+    --exploit-color: #ff0066;
+    --ddos-color: #ff0000;
+    --backdoor-color: #00ffaa;
+    --rootkit-color: #880000;
+    --ransom-color: #ffcc00;
+    --phish-color: #00ccff;
+    --sniff-color: #66ff66;
+    --tunnel-color: #0066ff;
+    --trace-color: #ff9900;
+    --firewall-color: #ff3333;
 }
 
 * {
@@ -319,7 +334,7 @@ body {
     height: 100%;
     background: linear-gradient(90deg, var(--accent-color), #99ff99);
     width: 0;
-    transition: width 0.3s;
+    transition: width 0.3s, background-color 0.5s;
     position: relative;
     overflow: hidden;
 }
@@ -381,6 +396,405 @@ body {
     border-radius: 5px;
     position: relative;
     overflow: hidden;
+    transition: background 0.5s;
+}
+
+/* Уникальные анимации для разных типов хакинга */
+.scan-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 170, 255, 0.2));
+}
+.scan-animation::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: var(--scan-color);
+    box-shadow: 0 0 15px 5px var(--scan-color);
+    left: 0;
+    animation: scannerMove 3s infinite linear;
+}
+
+.brute-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 85, 0, 0.2));
+}
+.brute-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 85, 0, 0.1) 10px, rgba(255, 85, 0, 0.1) 20px);
+    animation: bruteForce 0.5s infinite linear;
+}
+
+.decrypt-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(170, 0, 255, 0.2));
+}
+.decrypt-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, var(--decrypt-color) 1px, transparent 1px),
+        radial-gradient(circle, var(--decrypt-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    opacity: 0.3;
+    animation: decryptPulse 2s infinite;
+}
+
+.exploit-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 0, 102, 0.2));
+}
+.exploit-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 65%, var(--exploit-color) 75%, transparent 85%);
+    background-size: 200% 200%;
+    animation: exploitGlitch 1s infinite linear;
+}
+
+.ddos-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.2));
+}
+.ddos-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(var(--ddos-color) 1px, transparent 1px);
+    background-size: 10px 10px;
+    animation: ddosAttack 0.5s infinite;
+}
+
+.backdoor-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 255, 170, 0.2));
+}
+.backdoor-animation::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--backdoor-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: backdoorOpen 3s infinite;
+}
+
+.rootkit-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(136, 0, 0, 0.2));
+}
+.rootkit-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-radial-gradient(
+        circle at center,
+        var(--rootkit-color),
+        var(--rootkit-color) 5px,
+        transparent 5px,
+        transparent 20px
+    );
+    opacity: 0.3;
+    animation: rootkitPulse 2s infinite;
+}
+
+.ransom-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 204, 0, 0.2));
+}
+.ransom-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, transparent 90%, var(--ransom-color) 95%, transparent 100%);
+    background-size: 20px 20px;
+    animation: ransomLock 1s infinite linear;
+}
+
+.phish-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 204, 255, 0.2));
+}
+.phish-animation::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--phish-color);
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(45deg);
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+    animation: phishHook 3s infinite;
+}
+
+.sniff-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(102, 255, 102, 0.2));
+}
+.sniff-animation::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: var(--sniff-color);
+    top: 50%;
+    animation: sniffWave 2s infinite ease-in-out;
+}
+
+.tunnel-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 102, 255, 0.2));
+}
+.tunnel-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to right,
+        transparent,
+        transparent 10px,
+        var(--tunnel-color) 10px,
+        var(--tunnel-color) 12px
+    );
+    opacity: 0.3;
+    animation: tunnelMove 1s infinite linear;
+}
+
+.trace-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 153, 0, 0.2));
+}
+.trace-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--trace-color);
+    top: 0;
+    animation: traceRoute 3s infinite;
+}
+
+.firewall-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(255, 51, 51, 0.2));
+}
+.firewall-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 51, 51, 0.3) 10px,
+        rgba(255, 51, 51, 0.3) 20px
+    );
+    animation: firewallBreak 1s infinite;
+}
+
+/* Уникальные анимации для разных типов хакинга */
+.scan-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 170, 255, 0.2));
+}
+.scan-animation::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: var(--scan-color);
+    box-shadow: 0 0 15px 5px var(--scan-color);
+    left: 0;
+    animation: scannerMove 3s infinite linear;
+}
+
+.brute-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 85, 0, 0.2));
+}
+.brute-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 85, 0, 0.1) 10px, rgba(255, 85, 0, 0.1) 20px);
+    animation: bruteForce 0.5s infinite linear;
+}
+
+.decrypt-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(170, 0, 255, 0.2));
+}
+.decrypt-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, var(--decrypt-color) 1px, transparent 1px),
+        radial-gradient(circle, var(--decrypt-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    opacity: 0.3;
+    animation: decryptPulse 2s infinite;
+}
+
+.exploit-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 0, 102, 0.2));
+}
+.exploit-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 65%, var(--exploit-color) 75%, transparent 85%);
+    background-size: 200% 200%;
+    animation: exploitGlitch 1s infinite linear;
+}
+
+.ddos-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.2));
+}
+.ddos-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(var(--ddos-color) 1px, transparent 1px);
+    background-size: 10px 10px;
+    animation: ddosAttack 0.5s infinite;
+}
+
+.backdoor-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 255, 170, 0.2));
+}
+.backdoor-animation::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--backdoor-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: backdoorOpen 3s infinite;
+}
+
+.rootkit-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(136, 0, 0, 0.2));
+}
+.rootkit-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-radial-gradient(
+        circle at center,
+        var(--rootkit-color),
+        var(--rootkit-color) 5px,
+        transparent 5px,
+        transparent 20px
+    );
+    opacity: 0.3;
+    animation: rootkitPulse 2s infinite;
+}
+
+.ransom-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 204, 0, 0.2));
+}
+.ransom-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, transparent 90%, var(--ransom-color) 95%, transparent 100%);
+    background-size: 20px 20px;
+    animation: ransomLock 1s infinite linear;
+}
+
+.phish-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 204, 255, 0.2));
+}
+.phish-animation::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--phish-color);
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(45deg);
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -20px;
+    animation: phishHook 3s infinite;
+}
+
+.sniff-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(102, 255, 102, 0.2));
+}
+.sniff-animation::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: var(--sniff-color);
+    top: 50%;
+    animation: sniffWave 2s infinite ease-in-out;
+}
+
+.tunnel-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 102, 255, 0.2));
+}
+.tunnel-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to right,
+        transparent,
+        transparent 10px,
+        var(--tunnel-color) 10px,
+        var(--tunnel-color) 12px
+    );
+    opacity: 0.3;
+    animation: tunnelMove 1s infinite linear;
+}
+
+.trace-animation {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 153, 0, 0.2));
+}
+.trace-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--trace-color);
+    top: 0;
+    animation: traceRoute 3s infinite;
+}
+
+.firewall-animation {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(255, 51, 51, 0.2));
+}
+.firewall-animation::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 51, 51, 0.3) 10px,
+        rgba(255, 51, 51, 0.3) 20px
+    );
+    animation: firewallBreak 1s infinite;
 }
 
 /* Загрузочный экран */
@@ -465,6 +879,33 @@ body {
     height: 100%;
     z-index: -1;
     opacity: 0.05;
+}
+
+/* Стили для скроллбаров */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    box-shadow: inset 0 0 5px rgba(0, 255, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+    box-shadow: 0 0 6px var(--accent-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00ff00;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
 }
 
 /* Медиа-запросы */
@@ -581,6 +1022,78 @@ body {
 @keyframes scan {
     0% { top: 0; }
     100% { top: 100%; }
+}
+
+/* Анимации для разных типов хакинга */
+@keyframes scannerMove {
+    0% { left: 0; }
+    100% { left: 100%; }
+}
+
+@keyframes bruteForce {
+    0% { background-position: 0 0; }
+    100% { background-position: 20px 20px; }
+}
+
+@keyframes decryptPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes exploitGlitch {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+}
+
+@keyframes ddosAttack {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(5px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes backdoorOpen {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.2; }
+}
+
+@keyframes rootkitPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.6; }
+}
+
+@keyframes ransomLock {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+}
+
+@keyframes phishHook {
+    0%, 100% { transform: rotate(45deg) scale(1); }
+    50% { transform: rotate(90deg) scale(1.2); }
+}
+
+@keyframes sniffWave {
+    0%, 100% { transform: translateY(0) scaleX(1); }
+    50% { transform: translateY(0) scaleX(0.8); }
+}
+
+@keyframes tunnelMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20px); }
+}
+
+@keyframes traceRoute {
+    0% { top: 0; height: 2px; }
+    50% { top: 50%; height: 2px; }
+    100% { top: 100%; height: 2px; }
+}
+
+@keyframes firewallBreak {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+    51% { opacity: 0.2; }
+    100% { opacity: 0.3; }
 }
 
 .success-text {

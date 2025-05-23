@@ -552,6 +552,9 @@ function startAttack(type) {
                 'Поиск уязвимостей...',
                 'Составление отчета...'
             ];
+            // Создаем анимацию сканирования
+            attackVisual.classList.add('scan-animation');
+            attackProgressBar.style.backgroundColor = 'var(--scan-color)';
             break;
             
         case 'brute':
@@ -567,6 +570,9 @@ function startAttack(type) {
                 'Поиск хеша в базе данных...',
                 'Расшифровка пароля...'
             ];
+            // Создаем анимацию брутфорса
+            attackVisual.classList.add('brute-animation');
+            attackProgressBar.style.backgroundColor = 'var(--brute-color)';
             break;
             
         case 'decrypt':
@@ -581,6 +587,9 @@ function startAttack(type) {
                 'Проверка целостности данных...',
                 'Восстановление структуры...'
             ];
+            // Создаем анимацию дешифровки
+            attackVisual.classList.add('decrypt-animation');
+            attackProgressBar.style.backgroundColor = 'var(--decrypt-color)';
             break;
             
         case 'exploit':
@@ -595,6 +604,9 @@ function startAttack(type) {
                 'Повышение привилегий...',
                 'Установка бэкдора...'
             ];
+            // Создаем анимацию эксплойта
+            attackVisual.classList.add('exploit-animation');
+            attackProgressBar.style.backgroundColor = 'var(--exploit-color)';
             break;
             
         case 'ddos':
@@ -610,6 +622,9 @@ function startAttack(type) {
                 'Поддержание атаки...',
                 'Мониторинг состояния цели...'
             ];
+            // Создаем анимацию DDOS
+            attackVisual.classList.add('ddos-animation');
+            attackProgressBar.style.backgroundColor = 'var(--ddos-color)';
             break;
             
         case 'backdoor':
@@ -625,6 +640,9 @@ function startAttack(type) {
                 'Настройка автозапуска...',
                 'Маскировка следов...'
             ];
+            // Создаем анимацию бэкдора
+            attackVisual.classList.add('backdoor-animation');
+            attackProgressBar.style.backgroundColor = 'var(--backdoor-color)';
             break;
             
         case 'rootkit':
@@ -641,6 +659,9 @@ function startAttack(type) {
                 'Скрытие процессов...',
                 'Настройка персистентности...'
             ];
+            // Создаем анимацию руткита
+            attackVisual.classList.add('rootkit-animation');
+            attackProgressBar.style.backgroundColor = 'var(--rootkit-color)';
             break;
             
         case 'ransom':
@@ -656,6 +677,9 @@ function startAttack(type) {
                 'Создание записки с требованием...',
                 'Блокировка системы...'
             ];
+            // Создаем анимацию шифрования
+            attackVisual.classList.add('ransom-animation');
+            attackProgressBar.style.backgroundColor = 'var(--ransom-color)';
             break;
             
         case 'phish':
@@ -671,6 +695,9 @@ function startAttack(type) {
                 'Подготовка рассылки...',
                 'Запуск кампании...'
             ];
+            // Создаем анимацию фишинга
+            attackVisual.classList.add('phish-animation');
+            attackProgressBar.style.backgroundColor = 'var(--phish-color)';
             break;
             
         case 'sniff':
@@ -686,6 +713,9 @@ function startAttack(type) {
                 'Извлечение учетных данных...',
                 'Анализ протоколов...'
             ];
+            // Создаем анимацию снифера
+            attackVisual.classList.add('sniff-animation');
+            attackProgressBar.style.backgroundColor = 'var(--sniff-color)';
             break;
             
         case 'tunnel':
@@ -701,6 +731,9 @@ function startAttack(type) {
                 'Маскировка трафика...',
                 'Туннель активирован'
             ];
+            // Создаем анимацию туннеля
+            attackVisual.classList.add('tunnel-animation');
+            attackProgressBar.style.backgroundColor = 'var(--tunnel-color)';
             break;
             
         case 'trace':
@@ -716,6 +749,9 @@ function startAttack(type) {
                 'Поиск оптимального пути...',
                 'Составление карты сети...'
             ];
+            // Создаем анимацию трассировки
+            attackVisual.classList.add('trace-animation');
+            attackProgressBar.style.backgroundColor = 'var(--trace-color)';
             break;
             
         case 'firewall':
@@ -732,6 +768,9 @@ function startAttack(type) {
                 'Открытие портов...',
                 'Файрвол отключен'
             ];
+            // Создаем анимацию отключения файрвола
+            attackVisual.classList.add('firewall-animation');
+            attackProgressBar.style.backgroundColor = 'var(--firewall-color)';
             break;
     }
     
@@ -740,7 +779,7 @@ function startAttack(type) {
     targetValue.textContent = target;
     targetStatus.textContent = 'В ПРОЦЕССЕ';
     
-    // Добавляем визуальные эффекты
+    // Добавляем общие визуальные эффекты для всех типов атак
     const scanLine = document.createElement('div');
     scanLine.className = 'scan-line';
     attackVisual.appendChild(scanLine);
@@ -822,8 +861,10 @@ function startAttack(type) {
                 modal.style.display = 'none';
                 attackInProgress = false;
                 
-                // Удаляем визуальные эффекты
+                // Удаляем визуальные эффекты и сбрасываем классы анимаций
                 attackVisual.innerHTML = '';
+                attackVisual.className = 'attack-visual';
+                attackProgressBar.style.backgroundColor = '';
             }, 3000);
         }
         
@@ -865,6 +906,8 @@ function startAttack(type) {
         clearInterval(progressInterval);
         attackInProgress = false;
         attackVisual.innerHTML = '';
+        attackVisual.className = 'attack-visual';
+        attackProgressBar.style.backgroundColor = '';
     });
 }
 
